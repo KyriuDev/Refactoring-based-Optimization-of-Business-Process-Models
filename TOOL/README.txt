@@ -1,0 +1,2 @@
+The program can be executed from the command line using the command './gradlew main --args="<path_to_your_bpmn_file> <IAT>"'.
+It will create refactored versions of the given BPMN process according to the chosen algorithms (in Main.java) and the given parameters (IAT, resources, etc.).

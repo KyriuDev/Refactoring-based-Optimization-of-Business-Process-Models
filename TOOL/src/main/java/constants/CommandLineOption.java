@@ -1,0 +1,18 @@
+package constants;
+
+public enum CommandLineOption
+{
+    ALGORITHM,
+    ALGORITHM_PARAMETERS,
+    WORKING_DIRECTORY,
+    OVERWRITE,
+    IAT,
+    REAL_POOL,
+    BPMN_PROCESS,
+
+    HELP,
+
+    GLOBAL_DEPENDENCIES,
+    GLOBAL_INFORMATION,
+    OPTIMIZATION_CRITERIA
+}
