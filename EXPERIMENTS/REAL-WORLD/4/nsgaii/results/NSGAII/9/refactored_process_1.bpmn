@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" targetNamespace="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI">
+  <bpmn:process id="Process_VN51cjQE" isExecutable="true">
+    <bpmn:startEvent id="StartEvent">
+      <bpmn:outgoing>sequenceFlow-79e8d597-665f-49a7-94a5-d26d6a8fcd91</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent">
+      <bpmn:incoming>sequenceFlow-fb5e18b8-262c-444f-9e79-6dd9ab7edbb0</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="EvaluateRequest" name="EvaluateRequest (10) &#60;1 nurse&#62;">
+      <bpmn:incoming>sequenceFlow-79e8d597-665f-49a7-94a5-d26d6a8fcd91</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-8ee1419a-219a-43d8-9cef-968af958c235</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ExaminePatient" name="ExaminePatient (45) &#60;1 patient, 1 doctor&#62;">
+      <bpmn:incoming>sequenceFlow-9be577b7-27e7-44b3-a1e3-f1430d440b42</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-26858c9b-a800-4547-a596-b137833bd533</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_ru59n4">
+      <bpmn:outgoing>sequenceFlow-f63a2502-dcb9-476a-a688-8dfb5977ff27</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-22bce500-3d3e-4348-b939-86d37624aa9f</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-f8b53557-5424-42a8-99b2-c9be8a9225c1</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_WrV7oj">
+      <bpmn:incoming>sequenceFlow-95d7a01f-3b54-4121-9b7b-ed0bf95749ba</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-c8b7c2a2-8211-487c-bcb3-d5a911ab8eea</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-72fad7fc-409f-401c-a6df-c2e6f40be2cc</bpmn:incoming>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="EvaluateHospitalization" name="EvaluateHospitalization (10) &#60;1 patient&#62;">
+      <bpmn:incoming>sequenceFlow-87629f8c-f05a-4609-a332-e05efa448770</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-c3a28316-5e20-4bae-b76a-7c84fe7bdb0f</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="Gateway_Oz49X5">
+      <bpmn:outgoing>sequenceFlow-b0bc827f-289a-47e6-ab51-b4ddd560a358</bpmn:outgoing>
+      <bpmn:outgoing>sequenceFlow-22bce500-3d3e-4348-b939-86d37624aa9f</bpmn:outgoing>
+      <bpmn:outgoing>sequenceFlow-87629f8c-f05a-4609-a332-e05efa448770</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-79bbf59a-2385-412d-a4b8-a6bdf8412f6c</bpmn:incoming>
+    </bpmn:parallelGateway>
+    <bpmn:task id="ConductDiagnostic" name="ConductDiagnostic (5) &#60;1 nurse, 1 doctor&#62;">
+      <bpmn:outgoing>sequenceFlow-d6c17f9e-8c68-4628-8cda-08575d0c7eb9</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-26858c9b-a800-4547-a596-b137833bd533</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:task id="PrescribeTherapy" name="PrescribeTherapy (15) &#60;1 doctor&#62;">
+      <bpmn:outgoing>sequenceFlow-95d7a01f-3b54-4121-9b7b-ed0bf95749ba</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-f63a2502-dcb9-476a-a688-8dfb5977ff27</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:task id="TreatExacerbation" name="TreatExacerbation (20) &#60;1 doctor&#62;">
+      <bpmn:incoming>sequenceFlow-f8b53557-5424-42a8-99b2-c9be8a9225c1</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-72fad7fc-409f-401c-a6df-c2e6f40be2cc</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="PlanExamination" name="PlanExamination (10) &#60;1 secretary&#62;">
+      <bpmn:incoming>sequenceFlow-b0bc827f-289a-47e6-ab51-b4ddd560a358</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-9180c943-6b1d-409f-95ba-fa52fb2f2c19</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="Gateway_x6FPVd">
+      <bpmn:incoming>sequenceFlow-c8b7c2a2-8211-487c-bcb3-d5a911ab8eea</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-8b624bdc-d3be-40e3-a160-386dbff55105</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-c3a28316-5e20-4bae-b76a-7c84fe7bdb0f</bpmn:incoming>
+      <bpmn:incoming>sequenceFlow-9180c943-6b1d-409f-95ba-fa52fb2f2c19</bpmn:incoming>
+    </bpmn:parallelGateway>
+    <bpmn:exclusiveGateway id="Gateway_avCoQK">
+      <bpmn:outgoing>sequenceFlow-fb5e18b8-262c-444f-9e79-6dd9ab7edbb0</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-8b624bdc-d3be-40e3-a160-386dbff55105</bpmn:incoming>
+      <bpmn:incoming>sequenceFlow-01ddf1f0-c20f-4054-a003-78a46ebcb5a0</bpmn:incoming>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="MakeDiagnostic" name="MakeDiagnostic (10) &#60;1 doctor&#62;">
+      <bpmn:incoming>sequenceFlow-d6c17f9e-8c68-4628-8cda-08575d0c7eb9</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-01ddf1f0-c20f-4054-a003-78a46ebcb5a0</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_2RPVE3">
+      <bpmn:outgoing>sequenceFlow-9be577b7-27e7-44b3-a1e3-f1430d440b42</bpmn:outgoing>
+      <bpmn:incoming>sequenceFlow-8ee1419a-219a-43d8-9cef-968af958c235</bpmn:incoming>
+      <bpmn:outgoing>sequenceFlow-79bbf59a-2385-412d-a4b8-a6bdf8412f6c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="sequenceFlow-87629f8c-f05a-4609-a332-e05efa448770" name="" sourceRef="Gateway_Oz49X5" targetRef="EvaluateHospitalization" />
+    <bpmn:sequenceFlow id="sequenceFlow-8b624bdc-d3be-40e3-a160-386dbff55105" name="" sourceRef="Gateway_x6FPVd" targetRef="Gateway_avCoQK" />
+    <bpmn:sequenceFlow id="sequenceFlow-72fad7fc-409f-401c-a6df-c2e6f40be2cc" name="" sourceRef="TreatExacerbation" targetRef="Gateway_WrV7oj" />
+    <bpmn:sequenceFlow id="sequenceFlow-22bce500-3d3e-4348-b939-86d37624aa9f" name="" sourceRef="Gateway_Oz49X5" targetRef="Gateway_ru59n4" />
+    <bpmn:sequenceFlow id="sequenceFlow-95d7a01f-3b54-4121-9b7b-ed0bf95749ba" name="" sourceRef="PrescribeTherapy" targetRef="Gateway_WrV7oj" />
+    <bpmn:sequenceFlow id="sequenceFlow-8ee1419a-219a-43d8-9cef-968af958c235" name="" sourceRef="EvaluateRequest" targetRef="Gateway_2RPVE3" />
+    <bpmn:sequenceFlow id="sequenceFlow-79bbf59a-2385-412d-a4b8-a6bdf8412f6c" name="" sourceRef="Gateway_2RPVE3" targetRef="Gateway_Oz49X5" />
+    <bpmn:sequenceFlow id="sequenceFlow-b0bc827f-289a-47e6-ab51-b4ddd560a358" name="" sourceRef="Gateway_Oz49X5" targetRef="PlanExamination" />
+    <bpmn:sequenceFlow id="sequenceFlow-26858c9b-a800-4547-a596-b137833bd533" name="" sourceRef="ExaminePatient" targetRef="ConductDiagnostic" />
+    <bpmn:sequenceFlow id="sequenceFlow-fb5e18b8-262c-444f-9e79-6dd9ab7edbb0" name="" sourceRef="Gateway_avCoQK" targetRef="EndEvent" />
+    <bpmn:sequenceFlow id="sequenceFlow-c8b7c2a2-8211-487c-bcb3-d5a911ab8eea" name="" sourceRef="Gateway_WrV7oj" targetRef="Gateway_x6FPVd" />
+    <bpmn:sequenceFlow id="sequenceFlow-f63a2502-dcb9-476a-a688-8dfb5977ff27" name="" sourceRef="Gateway_ru59n4" targetRef="PrescribeTherapy" />
+    <bpmn:sequenceFlow id="sequenceFlow-79e8d597-665f-49a7-94a5-d26d6a8fcd91" name="" sourceRef="StartEvent" targetRef="EvaluateRequest" />
+    <bpmn:sequenceFlow id="sequenceFlow-c3a28316-5e20-4bae-b76a-7c84fe7bdb0f" name="" sourceRef="EvaluateHospitalization" targetRef="Gateway_x6FPVd" />
+    <bpmn:sequenceFlow id="sequenceFlow-01ddf1f0-c20f-4054-a003-78a46ebcb5a0" name="" sourceRef="MakeDiagnostic" targetRef="Gateway_avCoQK" />
+    <bpmn:sequenceFlow id="sequenceFlow-9180c943-6b1d-409f-95ba-fa52fb2f2c19" name="" sourceRef="PlanExamination" targetRef="Gateway_x6FPVd" />
+    <bpmn:sequenceFlow id="sequenceFlow-9be577b7-27e7-44b3-a1e3-f1430d440b42" name="" sourceRef="Gateway_2RPVE3" targetRef="ExaminePatient" />
+    <bpmn:sequenceFlow id="sequenceFlow-d6c17f9e-8c68-4628-8cda-08575d0c7eb9" name="" sourceRef="ConductDiagnostic" targetRef="MakeDiagnostic" />
+    <bpmn:sequenceFlow id="sequenceFlow-f8b53557-5424-42a8-99b2-c9be8a9225c1" name="" sourceRef="Gateway_ru59n4" targetRef="TreatExacerbation" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Process_VN51cjQE">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_VN51cjQE" bpmnElement="Process_VN51cjQE">
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_x6FPVd" bpmnElement="Gateway_x6FPVd">
+        <omgdc:Bounds x="860" y="238" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_avCoQK" bpmnElement="Gateway_avCoQK">
+        <omgdc:Bounds x="950" y="296" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_2RPVE3" bpmnElement="Gateway_2RPVE3">
+        <omgdc:Bounds x="230" y="301" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_PlanExamination" bpmnElement="PlanExamination">
+        <omgdc:Bounds x="470" y="330" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_WrV7oj" bpmnElement="Gateway_WrV7oj">
+        <omgdc:Bounds x="770" y="120" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ExaminePatient" bpmnElement="ExaminePatient">
+        <omgdc:Bounds x="320" y="389" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ConductDiagnostic" bpmnElement="ConductDiagnostic">
+        <omgdc:Bounds x="470" y="490" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_ru59n4" bpmnElement="Gateway_ru59n4">
+        <omgdc:Bounds x="500" y="30" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_MakeDiagnostic" bpmnElement="MakeDiagnostic">
+        <omgdc:Bounds x="620" y="520" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent" bpmnElement="StartEvent">
+        <omgdc:Bounds x="0" y="303" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EvaluateHospitalization" bpmnElement="EvaluateHospitalization">
+        <omgdc:Bounds x="470" y="170" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Gateway_Oz49X5" bpmnElement="Gateway_Oz49X5">
+        <omgdc:Bounds x="350" y="209" width="40" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent" bpmnElement="EndEvent">
+        <omgdc:Bounds x="1040" y="301" width="30" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EvaluateRequest" bpmnElement="EvaluateRequest">
+        <omgdc:Bounds x="80" y="288" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_PrescribeTherapy" bpmnElement="PrescribeTherapy">
+        <omgdc:Bounds x="620" y="160" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_TreatExacerbation" bpmnElement="TreatExacerbation">
+        <omgdc:Bounds x="620" y="0" width="100" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-22bce500-3d3e-4348-b939-86d37624aa9f" bpmnElement="sequenceFlow-22bce500-3d3e-4348-b939-86d37624aa9f">
+        <omgdi:waypoint x="390" y="219" />
+        <omgdi:waypoint x="432" y="219" />
+        <omgdi:waypoint x="432" y="50" />
+        <omgdi:waypoint x="500" y="50" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-01ddf1f0-c20f-4054-a003-78a46ebcb5a0" bpmnElement="sequenceFlow-01ddf1f0-c20f-4054-a003-78a46ebcb5a0">
+        <omgdi:waypoint x="720" y="550" />
+        <omgdi:waypoint x="732" y="550" />
+        <omgdi:waypoint x="732" y="316" />
+        <omgdi:waypoint x="950" y="316" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-c8b7c2a2-8211-487c-bcb3-d5a911ab8eea" bpmnElement="sequenceFlow-c8b7c2a2-8211-487c-bcb3-d5a911ab8eea">
+        <omgdi:waypoint x="810" y="140" />
+        <omgdi:waypoint x="822" y="140" />
+        <omgdi:waypoint x="822" y="258" />
+        <omgdi:waypoint x="860" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-79bbf59a-2385-412d-a4b8-a6bdf8412f6c" bpmnElement="sequenceFlow-79bbf59a-2385-412d-a4b8-a6bdf8412f6c">
+        <omgdi:waypoint x="270" y="313" />
+        <omgdi:waypoint x="282" y="313" />
+        <omgdi:waypoint x="282" y="229" />
+        <omgdi:waypoint x="350" y="229" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-79e8d597-665f-49a7-94a5-d26d6a8fcd91" bpmnElement="sequenceFlow-79e8d597-665f-49a7-94a5-d26d6a8fcd91">
+        <omgdi:waypoint x="30" y="318" />
+        <omgdi:waypoint x="80" y="318" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-9be577b7-27e7-44b3-a1e3-f1430d440b42" bpmnElement="sequenceFlow-9be577b7-27e7-44b3-a1e3-f1430d440b42">
+        <omgdi:waypoint x="270" y="328" />
+        <omgdi:waypoint x="282" y="328" />
+        <omgdi:waypoint x="282" y="419" />
+        <omgdi:waypoint x="320" y="419" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-72fad7fc-409f-401c-a6df-c2e6f40be2cc" bpmnElement="sequenceFlow-72fad7fc-409f-401c-a6df-c2e6f40be2cc">
+        <omgdi:waypoint x="720" y="30" />
+        <omgdi:waypoint x="732" y="30" />
+        <omgdi:waypoint x="732" y="140" />
+        <omgdi:waypoint x="770" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-9180c943-6b1d-409f-95ba-fa52fb2f2c19" bpmnElement="sequenceFlow-9180c943-6b1d-409f-95ba-fa52fb2f2c19">
+        <omgdi:waypoint x="570" y="360" />
+        <omgdi:waypoint x="582" y="360" />
+        <omgdi:waypoint x="582" y="258" />
+        <omgdi:waypoint x="860" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-d6c17f9e-8c68-4628-8cda-08575d0c7eb9" bpmnElement="sequenceFlow-d6c17f9e-8c68-4628-8cda-08575d0c7eb9">
+        <omgdi:waypoint x="570" y="520" />
+        <omgdi:waypoint x="582" y="520" />
+        <omgdi:waypoint x="582" y="550" />
+        <omgdi:waypoint x="620" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-f8b53557-5424-42a8-99b2-c9be8a9225c1" bpmnElement="sequenceFlow-f8b53557-5424-42a8-99b2-c9be8a9225c1">
+        <omgdi:waypoint x="540" y="42" />
+        <omgdi:waypoint x="582" y="42" />
+        <omgdi:waypoint x="582" y="30" />
+        <omgdi:waypoint x="620" y="30" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-8b624bdc-d3be-40e3-a160-386dbff55105" bpmnElement="sequenceFlow-8b624bdc-d3be-40e3-a160-386dbff55105">
+        <omgdi:waypoint x="900" y="258" />
+        <omgdi:waypoint x="912" y="258" />
+        <omgdi:waypoint x="912" y="316" />
+        <omgdi:waypoint x="950" y="316" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-8ee1419a-219a-43d8-9cef-968af958c235" bpmnElement="sequenceFlow-8ee1419a-219a-43d8-9cef-968af958c235">
+        <omgdi:waypoint x="180" y="318" />
+        <omgdi:waypoint x="192" y="318" />
+        <omgdi:waypoint x="192" y="321" />
+        <omgdi:waypoint x="230" y="321" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-26858c9b-a800-4547-a596-b137833bd533" bpmnElement="sequenceFlow-26858c9b-a800-4547-a596-b137833bd533">
+        <omgdi:waypoint x="420" y="419" />
+        <omgdi:waypoint x="432" y="419" />
+        <omgdi:waypoint x="432" y="520" />
+        <omgdi:waypoint x="470" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-87629f8c-f05a-4609-a332-e05efa448770" bpmnElement="sequenceFlow-87629f8c-f05a-4609-a332-e05efa448770">
+        <omgdi:waypoint x="390" y="229" />
+        <omgdi:waypoint x="434" y="229" />
+        <omgdi:waypoint x="434" y="200" />
+        <omgdi:waypoint x="470" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-b0bc827f-289a-47e6-ab51-b4ddd560a358" bpmnElement="sequenceFlow-b0bc827f-289a-47e6-ab51-b4ddd560a358">
+        <omgdi:waypoint x="390" y="239" />
+        <omgdi:waypoint x="432" y="239" />
+        <omgdi:waypoint x="432" y="360" />
+        <omgdi:waypoint x="470" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-95d7a01f-3b54-4121-9b7b-ed0bf95749ba" bpmnElement="sequenceFlow-95d7a01f-3b54-4121-9b7b-ed0bf95749ba">
+        <omgdi:waypoint x="720" y="190" />
+        <omgdi:waypoint x="732" y="190" />
+        <omgdi:waypoint x="732" y="140" />
+        <omgdi:waypoint x="770" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-c3a28316-5e20-4bae-b76a-7c84fe7bdb0f" bpmnElement="sequenceFlow-c3a28316-5e20-4bae-b76a-7c84fe7bdb0f">
+        <omgdi:waypoint x="570" y="200" />
+        <omgdi:waypoint x="582" y="200" />
+        <omgdi:waypoint x="582" y="258" />
+        <omgdi:waypoint x="860" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-f63a2502-dcb9-476a-a688-8dfb5977ff27" bpmnElement="sequenceFlow-f63a2502-dcb9-476a-a688-8dfb5977ff27">
+        <omgdi:waypoint x="540" y="57" />
+        <omgdi:waypoint x="582" y="57" />
+        <omgdi:waypoint x="582" y="190" />
+        <omgdi:waypoint x="620" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_sequenceFlow-fb5e18b8-262c-444f-9e79-6dd9ab7edbb0" bpmnElement="sequenceFlow-fb5e18b8-262c-444f-9e79-6dd9ab7edbb0">
+        <omgdi:waypoint x="990" y="316" />
+        <omgdi:waypoint x="1040" y="316" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

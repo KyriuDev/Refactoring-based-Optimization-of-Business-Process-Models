@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI">
+  <bpmn:process id="Process_TJOA91" isExecutable="false">
+    <bpmn:endEvent id="EndEvent">
+      <bpmn:incoming>Flow_YmTP3D</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_MqhqEz">
+      <bpmn:incoming>Flow_uu2VRD</bpmn:incoming>
+      <bpmn:incoming>Flow_lVatSP</bpmn:incoming>
+      <bpmn:outgoing>Flow_iLWgfL</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_h7kORC">
+      <bpmn:outgoing>Flow_LVzgid</bpmn:outgoing>
+      <bpmn:outgoing>Flow_h1hrlh</bpmn:outgoing>
+      <bpmn:incoming>Flow_PUoyks</bpmn:incoming>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="PrepareWelcomeKit" name="PrepareWelcomeKit (2) &#60;1 marketing_staff&#62;">
+      <bpmn:incoming>Flow_Spii4Z</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rhsj5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="ValidatePartially" name="ValidatePartially (1) &#60;1 human_resources&#62;">
+      <bpmn:outgoing>Flow_XTXxH1</bpmn:outgoing>
+      <bpmn:incoming>Flow_SgaEJE</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_Spii4Z" name="" sourceRef="UpdatePersonnelDatabase" targetRef="PrepareWelcomeKit" />
+    <bpmn:sequenceFlow id="Flow_0rhsj5" name="" sourceRef="PrepareWelcomeKit" targetRef="ArchiveDocuments" />
+    <bpmn:sequenceFlow id="Flow_PUoyks" name="" sourceRef="VisaApplication" targetRef="Gateway_h7kORC" />
+    <bpmn:task id="AskAdditionalDocuments" name="AskAdditionalDocuments (3) &#60;1 administration&#62;">
+      <bpmn:incoming>Flow_XTXxH1</bpmn:incoming>
+      <bpmn:outgoing>Flow_ka52XF</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_JYu3S6" name="" sourceRef="Gateway_SCh9OV" targetRef="Validate" />
+    <bpmn:sequenceFlow id="Flow_JppR9B" name="" sourceRef="MedicalCheckUp" targetRef="VisaApplication" />
+    <bpmn:exclusiveGateway id="Gateway_SCh9OV">
+      <bpmn:outgoing>Flow_JYu3S6</bpmn:outgoing>
+      <bpmn:incoming>Flow_h1hrlh</bpmn:incoming>
+      <bpmn:outgoing>Flow_SgaEJE</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:startEvent id="StartEvent">
+      <bpmn:outgoing>Flow_lVatSP</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_kjvGZi" name="" sourceRef="Validate" targetRef="Gateway_r34O1g" />
+    <bpmn:sequenceFlow id="Flow_YmTP3D" name="" sourceRef="ArchiveDocuments" targetRef="EndEvent" />
+    <bpmn:sequenceFlow id="Flow_ka52XF" name="" sourceRef="AskAdditionalDocuments" targetRef="Gateway_r34O1g" />
+    <bpmn:task id="FillForms" name="FillForms (2) &#60;1 applicant&#62;">
+      <bpmn:outgoing>Flow_AXwvVl</bpmn:outgoing>
+      <bpmn:incoming>Flow_iLWgfL</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:task id="VisaApplication" name="VisaApplication (14) &#60;1 visa_office&#62;">
+      <bpmn:incoming>Flow_JppR9B</bpmn:incoming>
+      <bpmn:outgoing>Flow_PUoyks</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_iLWgfL" name="" sourceRef="Gateway_MqhqEz" targetRef="FillForms" />
+    <bpmn:task id="ArchiveDocuments" name="ArchiveDocuments (1) &#60;1 administration&#62;">
+      <bpmn:outgoing>Flow_YmTP3D</bpmn:outgoing>
+      <bpmn:incoming>Flow_0rhsj5</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:task id="RejectApplication" name="RejectApplication (1) &#60;1 human_resources&#62;">
+      <bpmn:incoming>Flow_LVzgid</bpmn:incoming>
+      <bpmn:outgoing>Flow_uu2VRD</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_LVzgid" name="" sourceRef="Gateway_h7kORC" targetRef="RejectApplication" />
+    <bpmn:sequenceFlow id="Flow_NnBTUv" name="" sourceRef="Gateway_r34O1g" targetRef="UpdatePersonnelDatabase" />
+    <bpmn:sequenceFlow id="Flow_XTXxH1" name="" sourceRef="ValidatePartially" targetRef="AskAdditionalDocuments" />
+    <bpmn:sequenceFlow id="Flow_AXwvVl" name="" sourceRef="FillForms" targetRef="MedicalCheckUp" />
+    <bpmn:exclusiveGateway id="Gateway_r34O1g">
+      <bpmn:outgoing>Flow_NnBTUv</bpmn:outgoing>
+      <bpmn:incoming>Flow_kjvGZi</bpmn:incoming>
+      <bpmn:incoming>Flow_ka52XF</bpmn:incoming>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_uu2VRD" name="" sourceRef="RejectApplication" targetRef="Gateway_MqhqEz" />
+    <bpmn:sequenceFlow id="Flow_lVatSP" name="" sourceRef="StartEvent" targetRef="Gateway_MqhqEz" />
+    <bpmn:sequenceFlow id="Flow_h1hrlh" name="" sourceRef="Gateway_h7kORC" targetRef="Gateway_SCh9OV" />
+    <bpmn:task id="UpdatePersonnelDatabase" name="UpdatePersonnelDatabase (1) &#60;1 database&#62;">
+      <bpmn:incoming>Flow_NnBTUv</bpmn:incoming>
+      <bpmn:outgoing>Flow_Spii4Z</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="MedicalCheckUp" name="MedicalCheckUp (3) &#60;1 applicant, 1 doctor&#62;">
+      <bpmn:incoming>Flow_AXwvVl</bpmn:incoming>
+      <bpmn:outgoing>Flow_JppR9B</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Validate" name="Validate (3) &#60;1 human_resources&#62;">
+      <bpmn:incoming>Flow_JYu3S6</bpmn:incoming>
+      <bpmn:outgoing>Flow_kjvGZi</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_SgaEJE" name="" sourceRef="Gateway_SCh9OV" targetRef="ValidatePartially" />
+  </bpmn:process>
+</bpmn:definitions>
